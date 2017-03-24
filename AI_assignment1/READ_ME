@@ -1,0 +1,70 @@
+h1 = the sum of all tiles that are not in the correct position
+
+h2 = Manhattan distance or distance each tile needs to travel to be in the correct position,
+so h2 = the sum of manhattan distances of all tiles on the board.
+
+depth:  each node knows its depth in the tree, calculated by adding 1 to the current depth when a node is created.
+num_created: total of all nodes created, incremented after each node is created.
+num_expanded: number of nodes expanded so as to evaluate them for goal state.
+ If the node is not a goal state then child nodes are created and added to the fringe.
+max_fringe: highest number of nodes that could be visited at any given time during the program,
+ calculated by subtracting the num_expanded from the size of the visited list.
+
+
+DEPTH FIRST
+Time complexity is O(b^d) where b = 4 for branching factor  and d = n the possible depth of the tree
+initial_state = [1,2,3,4,5,6,7,8,9,'A','B','C',' ','D','F','E']
+Output 3, 7, 3, 4
+
+initial_state = [1, 2, 3, 4, 5, 6, 7, 8, 9, ' ', 'A', 'B', 'D', 'E', 'F', 'C']
+Output 3, 10, 4, 7
+
+
+DEPTH LIMITED
+Time complexity is O(b^d) where b = 4 for branching factor  and d =  maximum depth of the tree
+max_depth = 2
+initial_state = [1,2,3,4,5,6,7,8,9,'A','B','C',' ','D','F','E']
+Output 3, 7, 4, 4
+
+max_depth = 2
+initial_state = [1,2,3,4,5,6,7,8,9,'A',' ','E','D','F','C','B']
+Output "No goal found"
+
+max_depth = 3
+initial_state = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'F', 'B', 'D', 'E', ' ', 'C']
+Output: 3, 33, 15, 19
+
+
+BREADTH FIRST
+Time complexity is O(b^d) where b = 4 for branching factor  and d = n the possible depth of the tree
+initial_state = [1,2,3,4,5,6,7,8,9,'A','B','C',' ','D','F','E']
+Output 3, 17, 8, 10
+
+initial_state = initial_state = [1, 2, 3, 4, 5, 6, 7, 8, 9, ' ', 'A', 'B', 'D', 'E', 'F', 'C']
+Output 3, 35, 16, 20
+
+
+GREEDY
+Time complexity is O(b^d) where b = 4 for branching factor  and d = log(n) the possible depth of the tree
+initial_state = [1,2,3,4,5,6,7,8,9,'A','B','C',' ','D','F','E']
+h1 and h2
+Output 3, 7, 4, 4
+
+initial_state = [1,2,3,4,5,6,7,8,9,'A',' ','E','D','F','C','B']
+h1
+Output 6, 18, 9, 10
+h2
+Output 6, 17, 8, 10
+
+
+A-STAR
+Time complexity is O(b^d) where b = 4 for branching factor  and d = log(n) the possible depth of the tree
+initial_state = [1,2,3,4,5,6,7,8,9,'A','B','C',' ','D','F','E']
+h1 and h2
+Output 3, 7, 4, 4
+
+initial_state = [1,2,3,4,5,6,7,8,9,'A',' ','E','D','F','C','B']
+h2
+Output 6, 24, 12, 13
+h1
+Output 6, 216, 102, 115
